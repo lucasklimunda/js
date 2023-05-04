@@ -1,26 +1,72 @@
-// Primera entrega -- Simulador interactivo: Nota final de alumnos ingresados.
+// Segunda entrega 
 
-let cantidadDeAlumnos = prompt (`Ingrese la cantidad númerica de alumnos que quiere registrar en el sistema academico llamado "Console.log". Una vez ingresado al sistema, los nombres de los estudiantes junto a las notas, se alojarán los mismos en este sitio y calculará la nota final de cada uno.`)
-function CalculadorDePromedio(){
-    for (i = 1; i <= cantidadDeAlumnos; i++){
-    let alumno = prompt ("Inserte nombre del alumno")
-    
-    let primeraCalificacion = Number(prompt(`Ingrese la nota que obtuvo el alumno: "${alumno}" en su primera evaluación`))
-    let segundaCalificacion = Number(prompt(`Ingrese la nota que obtuvo el alumno: "${alumno}" en su segunda evaluación`))
-    let terceraCalificacion = Number(prompt(`Ingrese la nota que obtuvo el alumno: "${alumno}" en su tercera y última evaluación`))  
-    const SUMA = primeraCalificacion + segundaCalificacion + terceraCalificacion
-    let promedio = SUMA / 3
-    
-    if((promedio >= 9) || (promedio == 10) ){
-     promedio=`${promedio} aprobado con excelencia.`
-    }else if(promedio >= 6 ){
-    promedio = `${promedio} aprobado.`  
-    } else{
-      promedio = `${promedio} desaprobado.` 
-    }
-    
-    let calificación = alert(`El alumno: "${alumno}" tuvo una calificación de: ${promedio}`)
-    let calificaciónSistema = console.log(`Alumno: "${alumno}" registrado en el sistema. Calificación final: ${promedio}`)   
-  }}
+// -- Arrays de Objetos---
+const PRODUCTOS =[
+  {nombre:"Remera Nike",precio: 10000},
+  {nombre:"Remera Adidas",precio: 7500},
+  {nombre:"Remera Puma",precio: 6500},
+  {nombre:"Remera Nacional",precio: 5000},
+  {nombre:"Remera Oferta",precio: 2500}]
+ 
+  //-- Funciones y métodos de búsqueda/filtrado del array---
+  function encontrar (){
+  let busqueda = prompt(`Hola bienviend@ a la sección de marcas y precios, digite opción númerica que desea consultar:
+  1: Nike
+  2: Adidas
+  3: Puma
+  4: Nacional
+  5: Oferta
+  6: precio >= 6500
+  7: precio <= 6500
   
-  CalculadorDePromedio()
+  Las consultas se visualizaran en la parte de la consola.
+  `)
+  
+  switch (busqueda){
+      case "1":
+          let resultado1 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Nike")
+          console.log(resultado1)
+          break
+      case "2":
+          let resultado2 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Adidas")
+          console.log(resultado2)
+          break       
+      case "3":
+          let resultado3 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Puma")
+          console.log(resultado3)
+          break   
+      case "4":
+          let resultado4 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Nacional")
+          console.log(resultado4)
+          break
+      case "5":
+          let resultado5 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Oferta")
+          console.log(resultado5)
+          break
+      case "6":
+          let resultado6 = PRODUCTOS.filter ((producto)=> producto.precio >= 6500)
+          console.log(resultado6)
+          break
+      case "7":
+          let resultado7 = PRODUCTOS.filter ((producto)=> producto.precio <= 6500)
+          console.log(resultado7)
+          break
+      default:
+          console.log ("No digito ninguna opción de búsqueda") 
+          break       
+  }
+  }
+  
+  function repetir (){
+      let repeticion = prompt (`¿Desea realizar otra búsqueda? Para efectuar una nueva consulta en el sitio apriete cualquier tecla o ingrese la palabra "no" para finalizar.`).toLowerCase()
+      while (repeticion !== "no" ){
+          
+        encontrar ()
+        repeticion = prompt (`¿Desea realizar otra búsqueda? Para efectuar una nueva consulta en el sitio apriete cualquier tecla o ingrese la palabra "no" para finalizar.`).toLowerCase()
+        
+      }
+      return repeticion
+  }
+//--Funciones Ejecutadas/llamadas--  
+  encontrar ()
+  repetir ()
