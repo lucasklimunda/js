@@ -1,72 +1,49 @@
-// Segunda entrega 
+// Tercera pre-entrega (en desarrollo)
 
-// -- Arrays de Objetos---
-const PRODUCTOS =[
-  {nombre:"Remera Nike",precio: 10000},
-  {nombre:"Remera Adidas",precio: 7500},
-  {nombre:"Remera Puma",precio: 6500},
-  {nombre:"Remera Nacional",precio: 5000},
-  {nombre:"Remera Oferta",precio: 2500}]
+
+const CARDSPRODUCTOS = document.querySelector(".container-cards")
+const PRODUCTOS = [
+    { consola:"Super Nintendo", precio: 7500, marca:"Nintendo"},
+    {consola:"Nintendo Wii", precio: 8000, marca:"Nintendo"},
+    {consola:"Nintendo Switch", precio: 120000, marca:"Nintendo"},
+    { consola:"Playstation 1", precio: 11000, marca:"Playstation"},
+    { consola:"Playstation 2", precio: 15000, marca:"Playstation"},
+    { consola:"Playstation 3", precio: 40000, marca:"Playstation"},
+    { consola:"Playstation 4", precio: 70000, marca:"Playstation"},
+    { consola:"Playstation 5", precio: 200000, marca:"Playstation"},
+    { consola:"Xbox-one", precio: 100000, marca:"Xbox"}
+
+]
+
+function cargarProductos (){
  
-  //-- Funciones y métodos de búsqueda/filtrado del array---
-  function encontrar (){
-  let busqueda = prompt(`Hola bienviend@ a la sección de marcas y precios, digite opción númerica que desea consultar:
-  1: Nike
-  2: Adidas
-  3: Puma
-  4: Nacional
-  5: Oferta
-  6: precio >= 6500
-  7: precio <= 6500
-  
-  Las consultas se visualizaran en la parte de la consola.
-  `)
-  
-  switch (busqueda){
-      case "1":
-          let resultado1 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Nike")
-          console.log(resultado1)
-          break
-      case "2":
-          let resultado2 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Adidas")
-          console.log(resultado2)
-          break       
-      case "3":
-          let resultado3 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Puma")
-          console.log(resultado3)
-          break   
-      case "4":
-          let resultado4 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Nacional")
-          console.log(resultado4)
-          break
-      case "5":
-          let resultado5 = PRODUCTOS.find ((producto)=> producto.nombre === "Remera Oferta")
-          console.log(resultado5)
-          break
-      case "6":
-          let resultado6 = PRODUCTOS.filter ((producto)=> producto.precio >= 6500)
-          console.log(resultado6)
-          break
-      case "7":
-          let resultado7 = PRODUCTOS.filter ((producto)=> producto.precio <= 6500)
-          console.log(resultado7)
-          break
-      default:
-          console.log ("No digito ninguna opción de búsqueda") 
-          break       
-  }
-  }
-  
-  function repetir (){
-      let repeticion = prompt (`¿Desea realizar otra búsqueda? Para efectuar una nueva consulta en el sitio apriete cualquier tecla o ingrese la palabra "no" para finalizar.`).toLowerCase()
-      while (repeticion !== "no" ){
-          
-        encontrar ()
-        repeticion = prompt (`¿Desea realizar otra búsqueda? Para efectuar una nueva consulta en el sitio apriete cualquier tecla o ingrese la palabra "no" para finalizar.`).toLowerCase()
-        
-      }
-      return repeticion
-  }
-//--Funciones Ejecutadas/llamadas--  
-  encontrar ()
-  repetir ()
+    for(let producto of PRODUCTOS ){
+    let contenedor = document.createElement ("div")
+    contenedor.innerHTML=
+    `
+    <div class="card border-dark mb-3" style="max-width: 20rem;">
+    <div class="card-header">${producto.consola} </div>
+    <div class="card-body">
+        <p class="card-text"> $${producto.precio}</p>
+            <button type="button" class="btn btn-success ">Agregar al carrito</button>
+            <button type="button" class="btn btn-primary">Eliminar</button>
+        </div>
+    </div>
+    `
+    CARDSPRODUCTOS.appendChild (contenedor)
+}  }
+
+cargarProductos()
+
+const CATEGORIAS = document.querySelectorAll(".form-select")
+
+
+
+CATEGORIAS.forEach(categoria =>{
+    categoria.addEventListener("click", (e)=>{
+        if (e.currentTarget.id =! "catalogo"){
+            const PRODUCTOSELEGIDOS = PRODUCTOS.filter(producto=> producto.marca === e.currentTarget.id)
+            cargarProductos(PRODUCTOSELEGIDOS)
+        }else{cargarProductos()}
+    })
+})

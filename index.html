@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="./app.js"> </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <title>CONSOLASJS.COM</title>
+  </head>
+
+  <body>
+    <!-- NavBar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CONSOLASJS.COM</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <select class="form-select" aria-label="Default select example">
+        <option id="catalogo" selected>Mostrar todo el catálogo</option>
+        <option id="nintendo" value="1">Nintendo</option>
+        <option id="playstation" value="2">Playstation</option>
+        <option id="xbox" value="3">Xbox</option>
+      </select>
+    </nav>
+
+    <!-- Cards -->
+
+    <div class="container">
+      <h2>Catálogo de Productos</h2>
+    </div>
+
+    <div class="container-cards">
+      <!-- Agregado con JS-->
+    </div>
+
+    <hr />
+
+    <!-- Cart -->
+
+    <div class="container">
+      <h2>Tu Carrito</h2>
+      <em>Tus productos seleccionados...</em>.
+
+      <div class="container-cart">
+        <h4 class="card-title"></h4>
+        <p class="card-text">Precio:</p>
+        <button type="button" class="btn btn-outline-primary" id="btn-eliminar">
+          Eliminar
+        </button>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Form -->
+
+    <form class="container">
+      <h3>Formulario de Contacto</h3>
+      <label>Nombre y Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputName"
+        placeholder="Ingrese su Nombre y Apellido"
+      />
+      <label>Correo Electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        placeholder="Ingrese su E-mail"
+      />
+      <div class="container-form">
+        <button type="submit" class="btn btn-secondary">
+          Comprar y Enviar Información
+        </button>
+      </div>
+    </form>
+
+    <script src="app.js"></script>
+  </body>
 </html>
